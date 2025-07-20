@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000;
+  --color-title: #ffffff;
+  --color-primary: #ff6000;
+  --color-secondary: #813c00;
+  --font-poppins: "Poppins", sans-serif;
+}
+
+@utility root {
+  @apply bg-background text-title font-poppins;
+}
+
+@utility title {
+  @apply text-2xl font-bold;
+}
+
+@utility subtitle {
+  @apply text-lg font-semibold text-secondary;
+}
+
+@utility section-title {
+  @apply text-4xl  font-bold text-title;
+}
