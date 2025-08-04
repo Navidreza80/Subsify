@@ -7,9 +7,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../common/Button";
 import { useMediaQuery } from "react-responsive";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [mounted, setMounted] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useGSAP(() => {
     gsap.fromTo(
@@ -29,21 +35,31 @@ const Header = () => {
     <header className="w-full md:px-[128px] px-4 py-[25px] flex justify-between items-center">
       <Link href="/" aria-label="Subsify Home">
         <div id="logo">
-          <Image
-            width={isMobile ? 90 : 124}
-            height={isMobile ? 80 : 124}
-            src={Logo}
-            alt="Subsify Logo"
-            className="object-contain"
-          />
+          {mounted ? (
+            <Image
+              width={isMobile ? 90 : 124}
+              height={isMobile ? 80 : 124}
+              src={Logo}
+              alt="Subsify Logo"
+              className="object-contain"
+            />
+          ) : (
+            <Image
+              width={124}
+              height={124}
+              src={Logo}
+              alt="Subsify Logo"
+              className="object-contain"
+            />
+          )}
         </div>
       </Link>
 
       <div className="flex items-center md:space-x-4">
-        <Link href="/login">
+        <Link href="/authentication?mode=login">
           <Button>Login</Button>
         </Link>
-        <Link href="/register" className="md:block hidden">
+        <Link href="/authentication?mode=register" className="md:block hidden">
           <Button>Register</Button>
         </Link>
       </div>

@@ -5,6 +5,7 @@ import { Button } from "@/components/common/Button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
   useGSAP(() => {
@@ -73,9 +74,11 @@ const HeroSection = () => {
           manage, monitor, <br /> and cancel all your subscriptions in one{" "}
           <br /> clean dashboard.
         </h4>
-        <Button id="hero-button" className="mt-4 md:w-auto w-full !px-8">
-          Get Started for Free
-        </Button>
+        <Link href="/authentication?mode=register">
+          <Button id="hero-button" className="mt-4 md:w-auto w-full !px-8">
+            Get Started for Free
+          </Button>
+        </Link>
       </div>
       <div className="w-full" dir="rtl">
         <div id="hero-image">

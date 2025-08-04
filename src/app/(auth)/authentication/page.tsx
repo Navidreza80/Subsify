@@ -5,6 +5,7 @@ import { Fragment, useState, useRef } from "react";
 import { Button } from "@/components/common/Button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useSearchParams } from "next/navigation";
 
 const loginFields = [
   {
@@ -38,7 +39,10 @@ const registerFields = [
 ];
 
 const Page = () => {
-  const [activeTab, setActiveTab] = useState<"login" | "register">("login");
+  const searchParams = useSearchParams();
+  const modeParam = searchParams.get("mode");
+  const initialTab = modeParam === "register" ? "register" : "login";
+  const [activeTab, setActiveTab] = useState<"login" | "register">(initialTab);
 
   // Refs for GSAP
   const cardRef = useRef<HTMLDivElement>(null);
