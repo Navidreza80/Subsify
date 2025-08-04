@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <div
       ref={headerRef}
-      className="w-full rounded-2xl border border-secondary px-8 py-5 flex justify-between items-center bg-gradient-to-r from-background via-secondary/10 to-background shadow-lg relative overflow-hidden"
+      className="w-full sticky top-[37px] rounded-2xl border border-secondary px-8 py-5 flex justify-between items-center bg-gradient-to-r from-background via-secondary/10 to-background shadow-lg overflow-hidden"
     >
       {/* User Info */}
       <div className="flex items-center gap-4">

@@ -4,6 +4,66 @@ import HappyFace from "@/assets/images/icons/happy-face.png";
 import LinkIcon from "@/assets/images/icons/link.png";
 import DashboardCard from "../_components/DashboardCard";
 import PieChart from "../_components/PieChart";
+import DashboardTable from "../_components/DashboardTable";
+
+const items = [
+  {
+    name: "name",
+    price: "price",
+    type: "type",
+    category: "category",
+    payment: "payment",
+    status: "status",
+    renewalDate: "renewal date",
+  },
+  {
+    name: "name",
+    price: "price",
+    type: "type",
+    category: "category",
+    payment: "payment",
+    status: "status",
+    renewalDate: "renewal date",
+  },
+
+  {
+    name: "name",
+    price: "price",
+    type: "type",
+    category: "category",
+    payment: "payment",
+    status: "status",
+    renewalDate: "renewal date",
+  },
+  {
+    name: "name",
+    price: "price",
+    type: "type",
+    category: "category",
+    payment: "payment",
+    status: "status",
+    renewalDate: "renewal date",
+  },
+
+  {
+    name: "name",
+    price: "price",
+    type: "type",
+    category: "category",
+    payment: "payment",
+    status: "status",
+    renewalDate: "renewal date",
+  },
+  {
+    name: "name",
+    price: "price",
+    type: "type",
+    category: "category",
+    payment: "payment",
+    status: "status",
+    renewalDate: "renewal date",
+  },
+];
 
 const DashboardCards = [
   {
@@ -26,7 +86,7 @@ const DashboardCards = [
 
 export default function DashboardPage() {
   return (
-    <div className="flex justify-between w-full mt-6">
+    <div className="flex justify-between w-full mt-6 flex-wrap gap-y-4">
       <PieChart />
       {DashboardCards.map((card) => (
         <DashboardCard
@@ -38,6 +98,20 @@ export default function DashboardPage() {
           icon={card.icon}
         />
       ))}
+      <DashboardTable
+        title="Subscriptions"
+        contentItems={items}
+        headerItems={[
+          "name",
+          "price",
+          "type",
+          "category",
+          "payment",
+          "status",
+          "renewal date",
+          "",
+        ]}
+      />
     </div>
   );
 }

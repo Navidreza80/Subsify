@@ -21,7 +21,7 @@ const dashboardItems = [
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <aside className="w-[17.5%] border border-secondary rounded-2xl px-[14px] py-[23px]">
+    <aside className="w-[17.5%] sticky top-[37px] border border-secondary rounded-2xl px-[14px] py-[23px]">
       <div className="w-full flex justify-between">
         <Link href={"/home"}>
           <Image
