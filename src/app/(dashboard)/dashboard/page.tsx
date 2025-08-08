@@ -9,60 +9,31 @@ import Header from "../_components/Header";
 
 const items = [
   {
-    name: "name",
-    price: "price",
-    type: "type",
-    category: "category",
-    payment: "payment",
-    status: "status",
-    renewalDate: "renewal date",
+    name: "Netflix Premium",
+    price: "49",
+    type: "Monthly",
+    category: "entertainment",
+    payment: "credit card",
+    status: "active",
+    renewalDate: "2025-09-08",
   },
   {
-    name: "name",
-    price: "price",
-    type: "type",
-    category: "category",
-    payment: "payment",
-    status: "status",
-    renewalDate: "renewal date",
-  },
-
-  {
-    name: "name",
-    price: "price",
-    type: "type",
-    category: "category",
-    payment: "payment",
-    status: "status",
-    renewalDate: "renewal date",
+    name: "Netflix Premium",
+    price: "49",
+    type: "Monthly",
+    category: "entertainment",
+    payment: "credit card",
+    status: "active",
+    renewalDate: "2025-09-08",
   },
   {
-    name: "name",
-    price: "price",
-    type: "type",
-    category: "category",
-    payment: "payment",
-    status: "status",
-    renewalDate: "renewal date",
-  },
-
-  {
-    name: "name",
-    price: "price",
-    type: "type",
-    category: "category",
-    payment: "payment",
-    status: "status",
-    renewalDate: "renewal date",
-  },
-  {
-    name: "name",
-    price: "price",
-    type: "type",
-    category: "category",
-    payment: "payment",
-    status: "status",
-    renewalDate: "renewal date",
+    name: "Netflix Premium",
+    price: "49",
+    type: "Monthly",
+    category: "entertainment",
+    payment: "credit card",
+    status: "active",
+    renewalDate: "2025-09-08",
   },
 ];
 
@@ -88,7 +59,7 @@ const DashboardCards = [
 export default function DashboardPage() {
   return (
     <>
-      <Header title="Dashboard" description="Your personal overview" />
+      <Header />
       <div className="flex justify-between w-full mt-6 flex-wrap gap-y-4">
         <PieChart />
         {DashboardCards.map((card) => (

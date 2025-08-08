@@ -46,7 +46,7 @@ export default function InputSelect({
       onValueChange={handleChange}
     >
       <SelectTrigger
-        className={`${className} !h-[61px] w-full cursor-pointer outline-0 focus:outline-0 z-[1000] text-fade relative rounded-2xl shadow-none !font-medium border-border border-secondary`}
+        className={`${className} !h-[61px] w-full cursor-pointer outline-0 focus:outline-0 z-[10] text-fade relative rounded-2xl shadow-none !font-medium border-border border-secondary`}
       >
         <div
           className={`text-fade text-secondary font-medium  outline-0 focus:outline-0  absolute top-[-10] left-2 bg-background px-2`}

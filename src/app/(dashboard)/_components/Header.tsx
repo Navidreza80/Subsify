@@ -4,14 +4,9 @@ import Bell from "@/assets/images/icons/bell.png";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import Sidebar from "./Sidebar";
 
-const Header = ({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) => {
+const Header = () => {
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,34 +22,37 @@ const Header = ({
   return (
     <div
       ref={headerRef}
-      className="w-full z-10 backdrop-blur-2xl sticky top-[37px] rounded-2xl border border-secondary px-8 py-5 flex justify-between items-center bg-gradient-to-r from-background via-secondary/10 to-background shadow-lg overflow-hidden"
+      className="
+        w-full z-30 sticky top-[37px] 
+        rounded-2xl border border-secondary
+        px-4 sm:px-6 lg:px-8 py-4
+        flex justify-between
+        gap-4 sm:gap-0
+        backdrop-blur-2xl bg-gradient-to-r from-background via-secondary/10 to-background shadow-lg
+      "
     >
+      <Sidebar sideBarResponsive="hidden" />
+
       {/* User Info */}
-      <div className="flex items-center gap-4">
-        {/* Avatar */}
-        <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-title text-2xl font-bold shadow-md">
+      <div className="flex items-center gap-3 sm:gap-4">
+        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-secondary flex items-center justify-center text-title text-lg sm:text-2xl font-bold shadow-md">
           N
         </div>
-        <div>
-          <h1 className="title leading-tight">Navidreza</h1>
-          <p className="text-base text-secondary">
+        <div className="truncate">
+          <h1 className="title leading-tight text-base sm:text-lg">
+            Navidreza
+          </h1>
+          <p className="text-sm sm:text-base text-secondary truncate max-w-[150px] sm:max-w-none">
             navidrezaabbaszadeh89@gmail.com
           </p>
         </div>
       </div>
-      {/* Dashboard Title & Subtitle */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-        <div className="title text-2xl">{title}</div>
-        <span className="text-sm text-secondary mt-1">
-          {description}
-        </span>
-      </div>
-      {/* Logo & Notifications */}
-      <div className="flex items-center gap-6">
-        {/* Notification Bell */}
+
+      {/* Notifications */}
+      <div className="flex items-center justify-center sm:justify-end">
         <div className="relative cursor-pointer">
-          <Image src={Bell} alt="Notifications" width={32} height={32} />
-          <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full px-1.5 py-0.5 border-2 border-background">
+          <Image src={Bell} alt="Notifications" width={28} height={28} />
+          <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] sm:text-xs rounded-full px-1 py-0.5 border-2 border-background">
             3
           </span>
         </div>
