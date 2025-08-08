@@ -75,21 +75,21 @@ const items = [
 
 const StatusItems = [
   {
-    src: verified,
+    src: verified.src,
     title: "Active Subscriptions",
     value: "12",
     totalValue: "200",
     currency: "USD",
   },
   {
-    src: cancell,
+    src: cancell.src,
     title: "Cancelled Subscriptions",
     value: "6",
     totalValue: "200",
     currency: "USD",
   },
   {
-    src: pending,
+    src: pending.src,
     title: "Pending Subscriptions",
     value: "9",
     totalValue: "200",

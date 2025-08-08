@@ -2,7 +2,7 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap/all";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 const DashboardCard = ({
@@ -12,10 +12,10 @@ const DashboardCard = ({
   icon,
   href,
 }: {
-  image: StaticImageData;
+  image: string;
   title: string;
   subtitle: string;
-  icon: StaticImageData;
+  icon: string;
   href: string;
 }) => {
   useGSAP(() => {

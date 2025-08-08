@@ -40,18 +40,18 @@ const items = [
 const DashboardCards = [
   {
     id: 1,
-    image: HappyFace,
+    image: HappyFace.src,
     title: "Navidreza",
     subtitle: "navidrezaabbaszadeh89@gmail.com",
-    icon: EditIcon,
+    icon: EditIcon.src,
     href: "/dashboard/profile",
   },
   {
     id: 2,
-    image: Calendar,
+    image: Calendar.src,
     title: "Upcoming Events",
     subtitle: "Check your schedule",
-    icon: LinkIcon,
+    icon: LinkIcon.src,
     href: "/dashboard/events",
   },
 ];

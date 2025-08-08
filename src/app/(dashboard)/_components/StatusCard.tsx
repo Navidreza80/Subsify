@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 const StatusCard = ({
   src,
@@ -7,7 +7,7 @@ const StatusCard = ({
   totalValue,
   currency,
 }: {
-  src: StaticImageData;
+  src: string;
   title: string;
   value: string;
   totalValue: string;
