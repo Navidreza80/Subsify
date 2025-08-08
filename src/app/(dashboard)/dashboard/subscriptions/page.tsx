@@ -1,7 +1,10 @@
 "use client";
 
 import cancell from "@/assets/images/icons/cancell.png";
-import { default as pending, default as verified } from "@/assets/images/icons/verified.png";
+import {
+  default as pending,
+  default as verified,
+} from "@/assets/images/icons/verified.png";
 import { Button } from "@/components/common/Button";
 import { Calendar22 } from "@/components/ui/date-picker";
 import { useFormik } from "formik";
@@ -143,16 +146,16 @@ const Subscriptions = () => {
   ];
   return (
     <>
-      <Header title={"Subscriptions"} description="Track everything you pay" />
-      <div className="flex gap-y-6 items-start py-6 w-full flex-wrap">
-        <div className="grid grid-cols-3 gap-x-6 w-full">
+      <Header />
+      <div className="flex md:gap-y-6 gap-y-4 items-start py-6 w-full flex-wrap">
+        <div className="grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-x-6 w-full gap-y-4">
           {StatusItems.map((item, index) => (
             <StatusCard key={index} {...item} />
           ))}
         </div>
         <form
           onSubmit={form.handleSubmit}
-          className="w-full grid grid-cols-5 gap-6"
+          className="w-full grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 md:gap-6 gap-4"
         >
           {InputItems.map((item, index) => (
             <InputSelect
@@ -187,8 +190,13 @@ const Subscriptions = () => {
               </div>
             }
           />
-          <Button type="submit">Add Subscription</Button>
+          <Button className="md:hidden lg:block hidden" type="submit">
+            Add Subscription
+          </Button>
         </form>
+        <Button className="flex-1 md:block lg:hidden block" type="submit">
+          Add Subscription
+        </Button>
         <DashboardTable
           title="Subscriptions"
           contentItems={items}

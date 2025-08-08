@@ -32,9 +32,22 @@ const DashboardCard = ({
       }
     );
   }, []);
+
   return (
-    <div className="w-[23.5%] relative h-[268px] border rounded-2xl border-secondary flex justify-center items-center flex-col">
-      <div className="h-[150px] aspect-square rounded-full border border-secondary flex justify-center items-center">
+    <div className="
+      w-full sm:w-[48%] lg:w-[23.5%]
+      relative
+      border rounded-2xl border-secondary
+      flex flex-col justify-center items-center
+      p-4 sm:p-5
+      h-auto min-h-[250px]
+    ">
+      {/* Image container */}
+      <div className="
+        h-[120px] sm:h-[150px] aspect-square
+        rounded-full border border-secondary
+        flex justify-center items-center
+      ">
         <Image
           src={image}
           alt="Profile Picture"
@@ -43,10 +56,22 @@ const DashboardCard = ({
           height={67}
         />
       </div>
-      <span className="title animatedTitle mt-1">{title}</span>
-      <p className="w-[200px] text-ellipsis whitespace-nowrap overflow-hidden subtitle animatedSubtitle">
+
+      {/* Title */}
+      <span className="title animatedTitle mt-2 text-center text-base sm:text-lg">
+        {title}
+      </span>
+
+      {/* Subtitle */}
+      <p className="
+        w-[90%] sm:w-[200px]
+        text-ellipsis whitespace-nowrap overflow-hidden
+        subtitle animatedSubtitle text-sm sm:text-base text-center
+      ">
         {subtitle}
       </p>
+
+      {/* Edit Icon */}
       <Link href={href}>
         <Image
           className="top-2 right-2 absolute"

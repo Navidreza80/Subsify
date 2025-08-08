@@ -63,9 +63,7 @@ const PieChart = () => {
       pie: {
         donut: {
           size: "60%",
-          labels: {
-            show: false,
-          },
+          labels: { show: false },
         },
       },
     },
@@ -73,25 +71,38 @@ const PieChart = () => {
 
   if (!mounted)
     return (
-      <div className="w-[49.7%] h-[268px] flex items-center justify-center">
+      <div className="w-full sm:w-[48%] h-[268px] flex items-center justify-center">
         Loading...
       </div>
     );
 
   return (
-    <div className="w-[49.7%] px-[34px] h-[268px] border rounded-2xl border-secondary flex items-center justify-between">
-      <div ref={chartRef}>
+    <div
+      className="
+        w-full sm:w-[48%] lg:w-[49.7%]
+        px-4 sm:px-[34px]
+        border rounded-2xl border-secondary
+        flex flex-col lg:flex-row
+        items-center lg:items-center justify-between
+        gap-6 lg:gap-0
+        py-6 lg:py-0
+      "
+    >
+      {/* Chart */}
+      <div ref={chartRef} className="flex-shrink-0">
         <ReactApexChart
           options={options}
           series={series}
           type="donut"
-          width={220}
-          height={220}
+          width={200}
+          height={200}
         />
       </div>
+
+      {/* Controls */}
       <div
         ref={controlsRef}
-        className="w-[45.9%] flex justify-center gap-[19px] flex-col"
+        className="w-full lg:w-[45.9%] flex justify-center gap-[19px] flex-col"
       >
         <div className="relative w-full">
           <label
@@ -109,7 +120,6 @@ const PieChart = () => {
             <option value="expired">Expired</option>
           </select>
           <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
-            {/* Chevron Down SVG */}
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
               <path
                 d="M7 10l5 5 5-5"
