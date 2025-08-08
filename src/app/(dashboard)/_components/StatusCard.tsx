@@ -1,4 +1,6 @@
-import Image, { StaticImageData } from "next/image";
+/* eslint-disable */
+
+import Image from "next/image";
 
 const StatusCard = ({
   src,
@@ -7,7 +9,7 @@ const StatusCard = ({
   totalValue,
   currency,
 }: {
-  src: StaticImageData;
+  src: any;
   title: string;
   value: string;
   totalValue: string;

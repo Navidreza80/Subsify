@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 "use client";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap/all";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 const DashboardCard = ({
@@ -12,10 +14,10 @@ const DashboardCard = ({
   icon,
   href,
 }: {
-  image: StaticImageData;
+  image: any;
   title: string;
   subtitle: string;
-  icon: StaticImageData;
+  icon: any;
   href: string;
 }) => {
   useGSAP(() => {

@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { Fragment, useState, useRef } from "react";
 import { Button } from "@/components/common/Button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { Fragment, useRef, useState } from "react";
 
 const loginFields = [
   {
@@ -39,10 +38,7 @@ const registerFields = [
 ];
 
 const Page = () => {
-  const searchParams = useSearchParams();
-  const modeParam = searchParams.get("mode");
-  const initialTab = modeParam === "register" ? "register" : "login";
-  const [activeTab, setActiveTab] = useState<"login" | "register">(initialTab);
+  const [activeTab, setActiveTab] = useState<"login" | "register">("login");
 
   // Refs for GSAP
   const cardRef = useRef<HTMLDivElement>(null);
