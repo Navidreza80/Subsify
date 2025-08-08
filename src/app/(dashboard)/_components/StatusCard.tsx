@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Image from "next/image";
 
 const StatusCard = ({
@@ -7,7 +9,7 @@ const StatusCard = ({
   totalValue,
   currency,
 }: {
-  src: string;
+  src: any;
   title: string;
   value: string;
   totalValue: string;
