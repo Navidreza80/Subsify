@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { Fragment, useState, useRef, Suspense } from "react";
 import { Button } from "@/components/common/Button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { Fragment, useRef, useState } from "react";
 
 const loginFields = [
   {
@@ -39,10 +38,7 @@ const registerFields = [
 ];
 
 const Page = () => {
-  const searchParams = useSearchParams();
-  const modeParam = searchParams.get("mode");
-  const initialTab = modeParam === "register" ? "register" : "login";
-  const [activeTab, setActiveTab] = useState<"login" | "register">(initialTab);
+  const [activeTab, setActiveTab] = useState<"login" | "register">("login");
 
   // Refs for GSAP
   const cardRef = useRef<HTMLDivElement>(null);
@@ -99,83 +95,74 @@ const Page = () => {
   const formFields = activeTab === "register" ? registerFields : loginFields;
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="relative p-[26px] rounded-[48px] bg-[#191919]">
-          <div className="bg-secondary rounded-2xl top-[35px] left-[35px] w-[350px] md:w-[446px] h-[539px] absolute" />
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="relative p-[26px] rounded-[48px] bg-[#191919]">
+        <div className="bg-secondary rounded-2xl top-[35px] left-[35px] w-[350px] md:w-[446px] h-[539px] absolute" />
+        <button
+          className={`px-6 cursor-pointer absolute z-10 text-xl -top-[24px] pt-4 pb-6 rounded-t-2xl font-semibold bg-secondary transition-all ${
+            activeTab == "register" ? "left-[160px]" : "left-[140px]"
+          }`}
+          onClick={() =>
+            setActiveTab((prev) => (prev == "register" ? "login" : "register"))
+          }
+        >
+          {activeTab == "register" ? "Login" : "Register"}
+        </button>
+        <div
+          ref={cardRef}
+          className="rounded-2xl relative z-40 bg-[#181818] border border-secondary shadow-lg w-[350px] md:w-[446px] h-[539px] px-6 py-8 flex flex-col items-center"
+        >
           <button
-            className={`px-6 cursor-pointer absolute z-10 text-xl -top-[24px] pt-4 pb-6 rounded-t-2xl font-semibold bg-secondary transition-all ${
-              activeTab == "register" ? "left-[160px]" : "left-[140px]"
-            }`}
+            className="px-6 cursor-pointer absolute z-20 text-xl -top-[53px] border border-secondary border-b-[#191919] left-[21px] pt-4 pb-2 rounded-t-2xl font-semibold bg-[#191919]  transition-all"
             onClick={() =>
               setActiveTab((prev) =>
-                prev == "register" ? "login" : "register"
+                prev == "register" ? "register" : "login"
               )
             }
           >
-            {activeTab == "register" ? "Login" : "Register"}
+            {activeTab == "register" ? "Register" : "Login"}
           </button>
-          <div
-            ref={cardRef}
-            className="rounded-2xl relative z-40 bg-[#181818] border border-secondary shadow-lg w-[350px] md:w-[446px] h-[539px] px-6 py-8 flex flex-col items-center"
-          >
-            <button
-              className="px-6 cursor-pointer absolute z-20 text-xl -top-[53px] border border-secondary border-b-[#191919] left-[21px] pt-4 pb-2 rounded-t-2xl font-semibold bg-[#191919]  transition-all"
-              onClick={() =>
-                setActiveTab((prev) =>
-                  prev == "register" ? "register" : "login"
-                )
-              }
+
+          {/* Card */}
+          <div className="w-full pt-8 pb-2 px-2">
+            <h2
+              ref={titleRef}
+              className="text-center text-primary font-bold text-2xl mb-6 font-poppins tracking-wide"
             >
-              {activeTab == "register" ? "Register" : "Login"}
-            </button>
+              Subsify<span className="text-secondary">.</span>
+            </h2>
 
-            {/* Card */}
-            <div className="w-full pt-8 pb-2 px-2">
-              <h2
-                ref={titleRef}
-                className="text-center text-primary font-bold text-2xl mb-6 font-poppins tracking-wide"
-              >
-                Subsify<span className="text-secondary">.</span>
-              </h2>
-
-              <form ref={formRef} className="flex flex-col gap-4">
-                {formFields.map((field) => (
-                  <Fragment key={field.name}>
-                    <label className="text-sm font-semibold">
-                      {field.name}
-                    </label>
-                    <input
-                      type={field.type}
-                      className="rounded-xl bg-secondary/70 px-4 py-2 outline-none font-poppins"
-                      placeholder={field.placeholder}
-                    />
-                  </Fragment>
-                ))}
-                <Button className="w-full mt-2 bg-primary font-bold">
-                  {activeTab === "register" ? "Register" : "Login"}
-                </Button>
-                {activeTab === "login" ? (
-                  <Link
-                    href="#"
-                    className="text-xs text-blue-400 mt-2 text-left"
-                  >
-                    Forgot password?
-                  </Link>
-                ) : (
-                  <span
-                    className="text-xs text-blue-400 mt-2 text-left block cursor-pointer"
-                    onClick={() => setActiveTab("login")}
-                  >
-                    Already have an account? Login.
-                  </span>
-                )}
-              </form>
-            </div>
+            <form ref={formRef} className="flex flex-col gap-4">
+              {formFields.map((field) => (
+                <Fragment key={field.name}>
+                  <label className="text-sm font-semibold">{field.name}</label>
+                  <input
+                    type={field.type}
+                    className="rounded-xl bg-secondary/70 px-4 py-2 outline-none font-poppins"
+                    placeholder={field.placeholder}
+                  />
+                </Fragment>
+              ))}
+              <Button className="w-full mt-2 bg-primary font-bold">
+                {activeTab === "register" ? "Register" : "Login"}
+              </Button>
+              {activeTab === "login" ? (
+                <Link href="#" className="text-xs text-blue-400 mt-2 text-left">
+                  Forgot password?
+                </Link>
+              ) : (
+                <span
+                  className="text-xs text-blue-400 mt-2 text-left block cursor-pointer"
+                  onClick={() => setActiveTab("login")}
+                >
+                  Already have an account? Login.
+                </span>
+              )}
+            </form>
           </div>
         </div>
       </div>
-    </Suspense>
+    </div>
   );
 };
 
