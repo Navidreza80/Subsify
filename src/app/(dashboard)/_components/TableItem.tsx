@@ -7,7 +7,7 @@ const TableItem = ({
 }) => {
   return (
     <td
-      className={`border-b text-center border-secondary px-[23px] py-[27px] ${
+      className={`border-t text-center border-secondary px-[23px] py-[27px] ${
         itemKey == "action" && "border-r-0"
       } border-r`}
     >

@@ -57,7 +57,7 @@ const DashboardTable: React.FC<IProps> = ({
               {headerItems.map((item, index) => (
                 <th
                   key={index}
-                  className={`border-b border-secondary ${
+                  className={`border-secondary ${
                     index == 0 && "w-[158.5px]"
                   } ${
                     index == 7 && "rounded-tr-2xl bg-secondary border-r-0"

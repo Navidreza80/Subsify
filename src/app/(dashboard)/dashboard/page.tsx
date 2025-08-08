@@ -5,6 +5,7 @@ import LinkIcon from "@/assets/images/icons/link.png";
 import DashboardCard from "../_components/DashboardCard";
 import PieChart from "../_components/PieChart";
 import DashboardTable from "../_components/DashboardTable";
+import Header from "../_components/Header";
 
 const items = [
   {
@@ -86,32 +87,35 @@ const DashboardCards = [
 
 export default function DashboardPage() {
   return (
-    <div className="flex justify-between w-full mt-6 flex-wrap gap-y-4">
-      <PieChart />
-      {DashboardCards.map((card) => (
-        <DashboardCard
-          href={card.href}
-          key={card.id}
-          image={card.image}
-          title={card.title}
-          subtitle={card.subtitle}
-          icon={card.icon}
+    <>
+      <Header title="Dashboard" description="Your personal overview" />
+      <div className="flex justify-between w-full mt-6 flex-wrap gap-y-4">
+        <PieChart />
+        {DashboardCards.map((card) => (
+          <DashboardCard
+            href={card.href}
+            key={card.id}
+            image={card.image}
+            title={card.title}
+            subtitle={card.subtitle}
+            icon={card.icon}
+          />
+        ))}
+        <DashboardTable
+          title="Subscriptions"
+          contentItems={items}
+          headerItems={[
+            "name",
+            "price",
+            "type",
+            "category",
+            "payment",
+            "status",
+            "renewal date",
+            "",
+          ]}
         />
-      ))}
-      <DashboardTable
-        title="Subscriptions"
-        contentItems={items}
-        headerItems={[
-          "name",
-          "price",
-          "type",
-          "category",
-          "payment",
-          "status",
-          "renewal date",
-          "",
-        ]}
-      />
-    </div>
+      </div>
+    </>
   );
 }

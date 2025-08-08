@@ -31,7 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       ref={btnRef}
-      className={`py-[14px] px-[20px] cursor-pointer rounded-[16px] bg-primary text-lg font-semibold ${className}`}
+      className={`py-[14px] px-[20px] cursor-pointer rounded-[16px] bg-primary text-lg font-semibold ${className} whitespace-nowrap`}
       {...props}
       onClick={handleClick}
     >
