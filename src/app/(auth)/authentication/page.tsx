@@ -1,41 +1,10 @@
 "use client";
 
 import { Button } from "@/components/common/Button";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { loginFields, registerFields } from "@/constants";
+import useAuthAnimations from "@/hooks/useAuthAnimations";
 import Link from "next/link";
 import { Fragment, useRef, useState } from "react";
-
-const loginFields = [
-  {
-    name: "username",
-    type: "text",
-    placeholder: "Enter your username",
-  },
-  {
-    name: "password",
-    type: "password",
-    placeholder: "Enter your password",
-  },
-];
-
-const registerFields = [
-  {
-    name: "username",
-    type: "text",
-    placeholder: "Choose a username",
-  },
-  {
-    name: "email",
-    type: "email",
-    placeholder: "Enter your email",
-  },
-  {
-    name: "password",
-    type: "password",
-    placeholder: "Create a password",
-  },
-];
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
@@ -45,52 +14,12 @@ const Page = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  useGSAP(() => {
-    if (cardRef.current) {
-      gsap.fromTo(
-        cardRef.current,
-        { opacity: 0, scale: 0.95, x: 30, y: 30 },
-        {
-          opacity: 1,
-          scale: 1,
-          x: 0,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        }
-      );
-    }
-    if (titleRef.current) {
-      gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, x: 30, y: 30 },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.7,
-          delay: 0.3,
-          ease: "power2.out",
-        }
-      );
-    }
-    // Form fields stagger
-    if (formRef.current) {
-      gsap.fromTo(
-        formRef.current.querySelectorAll("label, input, button, span"),
-        { opacity: 0, x: 30, y: 30 },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.08,
-          delay: 0.5,
-          ease: "power2.out",
-        }
-      );
-    }
-  }, [activeTab]);
+  useAuthAnimations({
+    cardRef,
+    titleRef,
+    formRef,
+    activeTab,
+  });
 
   const formFields = activeTab === "register" ? registerFields : loginFields;
 
@@ -102,7 +31,7 @@ const Page = () => {
 
         {/* Switch Tab Button */}
         <button
-          className={`px-4 py-2 text-xs absolute z-10 -top-[15px] rounded-t-lg font-medium bg-secondary transition-all ${
+          className={`px-4 py-2 text-xs absolute z-10 -top-[15px] rounded-t-lg font-medium bg-secondary transition-all ease-in-out cursor-pointer ${
             activeTab === "register" ? "left-[110px]" : "left-[95px]"
           }`}
           onClick={() =>
@@ -119,7 +48,7 @@ const Page = () => {
         >
           {/* Active Tab Button */}
           <button
-            className="px-4 py-2 text-xs absolute z-20 -top-[33px] border border-secondary border-b-[#191919] left-4 rounded-t-lg font-medium bg-[#191919] transition-all"
+            className="px-4 ease-in-out cursor-pointer py-2 text-xs absolute z-20 -top-[33px] border border-secondary border-b-[#191919] left-4 rounded-t-lg font-medium bg-[#191919] transition-all ease-in-out"
             onClick={() =>
               setActiveTab((prev) =>
                 prev === "register" ? "register" : "login"
