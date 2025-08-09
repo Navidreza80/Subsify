@@ -115,7 +115,7 @@ const Features = () => {
           return (
             <div
               key={index}
-              className="flex gap-y-2 relative items-center justify-center w-[275px] aspect-square flex-wrap flex-col rounded-2xl border-secondary border md:border-b-0"
+              className="flex gap-y-2 relative items-center justify-center w-[275px] aspect-square flex-wrap flex-col rounded-t-2xl border-secondary border md:border-b-0"
             >
               <div className="relative">
                 <Image
