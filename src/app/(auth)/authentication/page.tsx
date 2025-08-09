@@ -1,41 +1,10 @@
 "use client";
 
 import { Button } from "@/components/common/Button";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { loginFields, registerFields } from "@/constants";
+import useAuthAnimations from "@/hooks/useAuthAnimations";
 import Link from "next/link";
 import { Fragment, useRef, useState } from "react";
-
-const loginFields = [
-  {
-    name: "username",
-    type: "text",
-    placeholder: "Enter your username",
-  },
-  {
-    name: "password",
-    type: "password",
-    placeholder: "Enter your password",
-  },
-];
-
-const registerFields = [
-  {
-    name: "username",
-    type: "text",
-    placeholder: "Choose a username",
-  },
-  {
-    name: "email",
-    type: "email",
-    placeholder: "Enter your email",
-  },
-  {
-    name: "password",
-    type: "password",
-    placeholder: "Create a password",
-  },
-];
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
@@ -45,114 +14,83 @@ const Page = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  useGSAP(() => {
-    if (cardRef.current) {
-      gsap.fromTo(
-        cardRef.current,
-        { opacity: 0, scale: 0.95, x: 30, y: 30 },
-        {
-          opacity: 1,
-          scale: 1,
-          x: 0,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        }
-      );
-    }
-    if (titleRef.current) {
-      gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, x: 30, y: 30 },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.7,
-          delay: 0.3,
-          ease: "power2.out",
-        }
-      );
-    }
-    // Form fields stagger
-    if (formRef.current) {
-      gsap.fromTo(
-        formRef.current.querySelectorAll("label, input, button, span"),
-        { opacity: 0, x: 30, y: 30 },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.08,
-          delay: 0.5,
-          ease: "power2.out",
-        }
-      );
-    }
-  }, [activeTab]);
+  useAuthAnimations({
+    cardRef,
+    titleRef,
+    formRef,
+    activeTab,
+  });
 
   const formFields = activeTab === "register" ? registerFields : loginFields;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="relative p-[26px] rounded-[48px] bg-[#191919]">
-        <div className="bg-secondary rounded-2xl top-[35px] left-[35px] w-[350px] md:w-[446px] h-[539px] absolute" />
+    <div className="h-screen flex items-center justify-center bg-background">
+      <div className="relative p-4 rounded-2xl bg-[#191919]">
+        {/* Background Accent */}
+        <div className="bg-secondary rounded-xl top-4 left-4 w-[280px] md:w-[340px] h-[420px] absolute" />
+
+        {/* Switch Tab Button */}
         <button
-          className={`px-6 cursor-pointer absolute z-10 text-xl -top-[24px] pt-4 pb-6 rounded-t-2xl font-semibold bg-secondary transition-all ${
-            activeTab == "register" ? "left-[160px]" : "left-[140px]"
+          className={`px-4 py-2 text-xs absolute z-10 -top-[15px] rounded-t-lg font-medium bg-secondary transition-all ease-in-out cursor-pointer ${
+            activeTab === "register" ? "left-[110px]" : "left-[95px]"
           }`}
           onClick={() =>
-            setActiveTab((prev) => (prev == "register" ? "login" : "register"))
+            setActiveTab((prev) => (prev === "register" ? "login" : "register"))
           }
         >
-          {activeTab == "register" ? "Login" : "Register"}
+          {activeTab === "register" ? "Login" : "Register"}
         </button>
+
+        {/* Main Card */}
         <div
           ref={cardRef}
-          className="rounded-2xl relative z-40 bg-[#181818] border border-secondary shadow-lg w-[350px] md:w-[446px] h-[539px] px-6 py-8 flex flex-col items-center"
+          className="rounded-xl relative z-40 bg-[#181818] border border-secondary/50 shadow-lg w-[280px] md:w-[340px] h-[420px] px-4 py-6 flex flex-col items-center"
         >
+          {/* Active Tab Button */}
           <button
-            className="px-6 cursor-pointer absolute z-20 text-xl -top-[53px] border border-secondary border-b-[#191919] left-[21px] pt-4 pb-2 rounded-t-2xl font-semibold bg-[#191919]  transition-all"
+            className="px-4 ease-in-out cursor-pointer py-2 text-xs absolute z-20 -top-[33px] border border-secondary border-b-[#191919] left-4 rounded-t-lg font-medium bg-[#191919] transition-all ease-in-out"
             onClick={() =>
               setActiveTab((prev) =>
-                prev == "register" ? "register" : "login"
+                prev === "register" ? "register" : "login"
               )
             }
           >
-            {activeTab == "register" ? "Register" : "Login"}
+            {activeTab === "register" ? "Register" : "Login"}
           </button>
 
-          {/* Card */}
-          <div className="w-full pt-8 pb-2 px-2">
+          {/* Card Content */}
+          <div className="w-full pt-4 pb-2 px-2">
             <h2
               ref={titleRef}
-              className="text-center text-primary font-bold text-2xl mb-6 font-poppins tracking-wide"
+              className="text-center text-primary font-semibold text-lg mb-4 tracking-wide"
             >
               Subsify<span className="text-secondary">.</span>
             </h2>
 
-            <form ref={formRef} className="flex flex-col gap-4">
+            <form ref={formRef} className="flex flex-col gap-2">
               {formFields.map((field) => (
                 <Fragment key={field.name}>
-                  <label className="text-sm font-semibold">{field.name}</label>
+                  <label className="text-xs font-medium">{field.name}</label>
                   <input
                     type={field.type}
-                    className="rounded-xl bg-secondary/70 px-4 py-2 outline-none font-poppins"
+                    className="rounded-lg bg-secondary/70 placeholder:text-xs  px-3 py-2 text-xs outline-none"
                     placeholder={field.placeholder}
                   />
                 </Fragment>
               ))}
-              <Button className="w-full mt-2 bg-primary font-bold">
+              <Button className="w-full mt-2 bg-primary font-semibold text-sm">
                 {activeTab === "register" ? "Register" : "Login"}
               </Button>
               {activeTab === "login" ? (
-                <Link href="#" className="text-xs text-blue-400 mt-2 text-left">
+                <Link
+                  href="#"
+                  className="text-[10px] text-blue-400 mt-1 text-left"
+                >
                   Forgot password?
                 </Link>
               ) : (
                 <span
-                  className="text-xs text-blue-400 mt-2 text-left block cursor-pointer"
+                  className="text-[10px] text-blue-400 mt-1 text-left block cursor-pointer"
                   onClick={() => setActiveTab("login")}
                 >
                   Already have an account? Login.
