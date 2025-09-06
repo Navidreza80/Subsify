@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Subsify
 
-## Getting Started
+A fully custom-built app designed from scratch to showcase my **UX/UI design expertise** and **front-end development skills**.
 
-First, run the development server:
+---
+
+<img width="1914" height="972" alt="Screenshot 2025-09-06 210550" src="https://github.com/user-attachments/assets/9e7d72b0-064e-46fb-8929-337511c2f3db" />
+*Hero section*
+<img width="1913" height="969" alt="image" src="https://github.com/user-attachments/assets/573eaff4-8de3-4ef0-9ed5-18ebc06b890f" />
+*Dashboard*
+
+---
+
+## Demo
+
+[Live Demo](https://subsify-app.netlify.app)
+
+---
+
+## Overview
+
+Subsify is a sleek and intuitive application crafted to highlight:
+
+- Clean, responsive design principles  
+- Smooth interactivity and navigation flows  
+- Performance-focused development with **Next.js**  
+- Consistency through **Tailwind CSS** styling  
+
+---
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org)  
+- **Language**: TypeScript  
+- **Styling**: Tailwind CSS v4  
+- **Typography**: Geist font via `next/font`
+
+---
+
+## Quick Start
 
 ```bash
+# Clone the repo
+git clone https://github.com/Navidreza80/Subsify.git
+cd Subsify
+
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Design Highlights
 
-## Learn More
+User-Centered layouts & flows
 
-To learn more about Next.js, take a look at the following resources:
+Responsive across devices
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Performance-first via Next.js optimizations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Consistent Visuals with Tailwind utilities
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Type Safety through TypeScript
